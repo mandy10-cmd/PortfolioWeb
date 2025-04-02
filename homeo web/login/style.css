@@ -1,0 +1,42 @@
+body{
+    display: grid;
+    place-items: center;
+    gap: 50px;
+    height: 100vh;
+    background: #eff9ff;
+    font-family: "poppins";
+}
+ @media (width >=500px){
+    body{padding: 0;}
+
+    .card{
+        margin: 0;
+        width: 360px;
+    }
+ }
+.background{
+    position: fixed;
+    top: -50vmin;
+    left: 50vmin;
+    width: 100vmin;
+    height: 100vmin;
+    border-radius: 
+    47% 53% 61% 39% /
+    45% 51% 49% 55%;
+    background: #65c8ff;
+}
+
+
+.card{
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+    width: 94%;
+    margin: 0 20px;
+    padding: 170px 30px 54px;
+    border-radius: 24px;
+    background: #ffffff;
+    text-align: center;
+    box-shadow: 0 100px 100px
+    rgb(0 0 0 /10%);
+}
