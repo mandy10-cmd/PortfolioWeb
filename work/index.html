@@ -4,274 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Work Section</title>
-    <style>
-        /* Global styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Work section styles */
-        .work-section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            width: 70px;
-            height: 3px;
-            background: #4a6cf7;
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Project grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-img img {
-            transform: scale(1.1);
-        }
-
-        .project-info {
-            padding: 20px;
-        }
-
-        .project-title {
-            font-size: 22px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .project-description {
-            margin-bottom: 15px;
-            color: #666;
-            font-size: 15px;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tech-tag {
-            background: #f1f5ff;
-            color: #4a6cf7;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 10px;
-        }
-
-        .project-link {
-            padding: 8px 15px;
-            background: #4a6cf7;
-            color: white;
-            border-radius: 4px;
-            font-size: 14px;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
-
-        .project-link:hover {
-            background: #3a5cd8;
-        }
-
-        .project-link.secondary {
-            background: transparent;
-            color: #4a6cf7;
-            border: 1px solid #4a6cf7;
-        }
-
-        .project-link.secondary:hover {
-            background: #f1f5ff;
-        }
-
-        /* Project modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: #fff;
-            max-width: 900px;
-            margin: 30px auto;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            animation: modalFadeIn 0.3s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-header {
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-title {
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #666;
-        }
-
-        .modal-body {
-            padding: 20px;
-        }
-
-        .project-details {
-            margin-bottom: 30px;
-        }
-
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .gallery-img {
-            border-radius: 5px;
-            overflow: hidden;
-            height: 180px;
-        }
-
-        .gallery-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-features {
-            margin-bottom: 30px;
-        }
-
-        .features-list {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-
-        .features-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 10px;
-        }
-
-        .features-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #4a6cf7;
-            font-weight: bold;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-            
-            .section-title h2 {
-                font-size: 28px;
-            }
-            
-            .modal-content {
-                margin: 10px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <section id="work" class="work-section">
@@ -284,20 +17,21 @@
                 <!-- Project 1 -->
                 <div class="project-card" data-project="project1">
                     <div class="project-img">
-                        <img src="/api/placeholder/400/320" alt="E-commerce Website">
+                        <img src="/image/trinetra -1.png" alt="Trinetra AI">
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">E-commerce Platform</h3>
-                        <p class="project-description">A fully responsive e-commerce platform with product catalog, shopping cart, and payment integration.</p>
+                        <h3 class="project-title">Trinetra-AI</h3>
+                        <p class="project-description">Trinetra-AI is an intelligent video surveillance platform that detects crimes, emergencies, and suspicious activities </p>
                         <div class="project-tech">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">typescript</span>
+                            <span class="tech-tag">Next.js</span>
+                            
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link view-details">View Details</a>
-                            <a href="https://github.com/yourusername/project1" target="_blank" class="project-link secondary">GitHub</a>
+                            <a href="https://github.com/mandy10-cmd/Trinetra-AI.git" target="_blank" class="project-link secondary">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -305,20 +39,20 @@
                 <!-- Project 2 -->
                 <div class="project-card" data-project="project2">
                     <div class="project-img">
-                        <img src="/api/placeholder/400/320" alt="Portfolio Website">
+                        <img src="/image/file size reducer -1.png" alt="FSR system">
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">Portfolio Website</h3>
-                        <p class="project-description">A personal portfolio website showcasing skills, projects, and contact information.</p>
+                        <h3 class="project-title">File Size Compressor System</h3>
+                        <p class="project-description">Compress your files, images, and videos effortlessly without compromising quality. Reduce size and save storage in just a few clicks!.</p>
                         <div class="project-tech">
                             <span class="tech-tag">HTML5</span>
                             <span class="tech-tag">CSS3</span>
                             <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">GSAP</span>
+                            
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link view-details">View Details</a>
-                            <a href="https://github.com/yourusername/project2" target="_blank" class="project-link secondary">GitHub</a>
+                            <a href="https://github.com/mandy10-cmd/File-size-reducer-system.git" target="_blank" class="project-link secondary">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -326,15 +60,15 @@
                 <!-- Project 3 -->
                 <div class="project-card" data-project="project3">
                     <div class="project-img">
-                        <img src="/api/placeholder/400/320" alt="Travel App">
+                        <img src="/image/indisign-1.png" alt="ISL">
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">Travel Companion App</h3>
-                        <p class="project-description">A travel application that helps users discover places, plan trips, and share experiences.</p>
+                        <h3 class="project-title">Indian Sign Language Translator</h3>
+                        <p class="project-description">Translate text and gestures seamlessly with our Indian Sign Language (ISL) translator. Bridging communication between the hearing and deaf communities with ease!</p>
                         <div class="project-tech">
                             <span class="tech-tag">React Native</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">Google Maps API</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">NLP&ML</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link view-details">View Details</a>
@@ -424,79 +158,79 @@
         // Project data - you would replace this with your actual project data
         const projectsData = {
             project1: {
-                title: "E-commerce Platform",
-                description: "A fully functional e-commerce platform that allows users to browse products, add items to cart, and complete purchases with secure payment processing.",
+                title: "Trinetra-AI",
+                description: "Trinetra-AI is an intelligent video surveillance platform that detects crimes, emergencies, and suspicious activities",
                 images: [
-                    "/api/placeholder/400/320",
+                    "./image/Trinetra-2.png",
                     "/api/placeholder/400/320",
                     "/api/placeholder/400/320"
                 ],
                 features: [
-                    "Responsive design for all device sizes",
-                    "User authentication and profiles",
-                    "Product search and filtering",
-                    "Shopping cart functionality",
-                    "Secure payment integration with Stripe",
-                    "Order history and tracking"
+                    "Real-Time Object and Activity Detection",
+                    "Facial Recognition & Verification",
+                    "Smart Alert System",
+                    "Video Analytics and Insights",
+                    "Cloud-Based Storage & Access",
+                    "AI Model Customization"
+                    
                 ],
                 technologies: [
                     "React for frontend development",
                     "Node.js and Express for backend",
-                    "MongoDB for database",
-                    "Redux for state management",
-                    "Stripe API for payments",
-                    "AWS S3 for image storage"
+                    "YOLO / OpenCV / MediaPipe",
+                    "Python (TensorFlow / PyTorch) ",
+                    "Stripe API for AI integration (GEMINI)",
+                    "Supabase for Anon key & API integration"
                 ],
                 liveLink: "https://example-ecommerce.com",
                 githubLink: "https://github.com/yourusername/project1"
             },
             project2: {
-                title: "Portfolio Website",
-                description: "A personal portfolio website that showcases my skills, projects, and experience in a clean and interactive design.",
+                title: "File Size Compressor System",
+                description: "A file size compressor reduces the storage space a file occupies by minimizing redundant data. It makes files easier to store, share, and transfer without altering their content. Compressors use algorithms like ZIP, RAR, or GZIP for efficient compression. This helps save disk space and speeds up file uploads and downloads.",
                 images: [
                     "/api/placeholder/400/320",
                     "/api/placeholder/400/320",
                     "/api/placeholder/400/320"
                 ],
                 features: [
-                    "Interactive UI with smooth animations",
-                    "Project showcase with filtering",
-                    "Dark/light theme toggle",
-                    "Contact form with validation",
-                    "Performance optimized loading"
+                    "Multi-Format Compression",
+                    "Fast & Efficient Processing",
+                    "Quality Adjustment Options",
+                    "Secure File Handling",
+                    "Cross-Platform Compatibility"
                 ],
                 technologies: [
                     "HTML5 and CSS3",
-                    "JavaScript with ES6+ features",
-                    "GSAP for animations",
-                    "Formspree for contact form",
-                    "Netlify for hosting and deployment"
+                    "JavaScript ",
+                
+                    "Render for hosting and deployment"
                 ],
-                liveLink: "https://yourportfolio.com",
+                liveLink: "https://tiny-byte.onrender.com/",
                 githubLink: "https://github.com/yourusername/project2"
             },
             project3: {
-                title: "Travel Companion App",
-                description: "A mobile application that helps travelers discover places of interest, plan their trips, and share their experiences with others.",
+                title: "Indian Sign Language Translator",
+                description: "The Indian Sign Language Translator app bridges communication gaps for the deaf and mute community by converting Indian Sign Language (ISL) gestures into text or speech. It provides real-time translation, helping users interact seamlessly in various environments. Designed to be intuitive and user-friendly, the app aims to promote inclusivity and break down barriers.",
                 images: [
                     "/api/placeholder/400/320",
                     "/api/placeholder/400/320",
                     "/api/placeholder/400/320"
                 ],
                 features: [
-                    "Interactive maps with points of interest",
-                    "Trip planning and itinerary creation",
-                    "User reviews and ratings",
+                    "Text-to-Sign Translation",
+                    "Voice-to-Sign Conversion",
+                    "Interactive Learning Module",
                     "Offline access to saved places",
-                    "Photo sharing capabilities",
-                    "Travel recommendations based on preferences"
+                    "User-Friendly & Accessible Design",
+                    "History & Saved Translations"
                 ],
                 technologies: [
-                    "React Native for cross-platform development",
-                    "Firebase for authentication and database",
-                    "Google Maps API for location services",
-                    "Expo for development workflow",
-                    "Redux for state management"
+                    "React Native / React.js — For building a responsive and cross-platform user interface.",
+                    "Python (TensorFlow / PyTorch) — For developing and training gesture recognition models.",
+                    "OpenCV — For image and gesture processing from camera input.",
+                    "Teachable machine for model training",
+                    "Andriod studio for mobile application preview"
                 ],
                 liveLink: "https://play.google.com/store/apps/yourtravelapp",
                 githubLink: "https://github.com/yourusername/project3"
